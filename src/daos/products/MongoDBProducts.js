@@ -22,8 +22,14 @@ export class MongoDBProducts extends MongoClass {
             type: String,
             trim: true,
           }
-        }); 
+        },
+          {
+            timestamps: true,
+            versionKey: false
+          }
+        ); 
     }
    
 }
+
 

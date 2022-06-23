@@ -27,6 +27,9 @@ export class MongoDBCarts extends MongoClass {
             },
           },
         ],
+      }, {
+        Timestamps: true,
+        versionKey: false
       });
   }
 }
