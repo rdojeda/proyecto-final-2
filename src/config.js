@@ -1,5 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import 'dotenv/config'
 
 export default {
   mongoDB: {
@@ -9,12 +8,6 @@ export default {
             options: {
                         useNewUrlParser: true,
                         useUnifiedTopology: true,
-                    },
-  },
-  firebaseDB: {
-                URL: '',
-                options: {
-
-                }
-  }
+                    }
+      }
 };

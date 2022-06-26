@@ -13,8 +13,8 @@ class MongoClass {
     try {
       const allItems = await this.collection.find({});
       return allItems;
-    } catch (error) {
-      console.log("error:", error);
+    } catch (err) {
+      throw new Error(err);
     }
   }
   
@@ -23,41 +23,39 @@ class MongoClass {
       const newItem = await this.collection.create(obj);
       return newItem;
 
-    } catch (error) {
-      console.log("error:", error);
+    } catch (err) {
+      throw new Error(err);
     }
   }
  //NO
-  async findById(id) {
+  async getItem(id) {
     try {
-      const findItemId = await this.collection.findById({_id:id})
+      const findItemId = await this.collection.findById(id)
       return findItemId
 
-    } catch (error) {
-      console.log("Error:", error)
+    } catch (err) {
+      throw new Error(err);
     }
     
   }
 
-  async update(id) {
+  async update(id, obj) {
     try {
-      let updateId = await this.collection.findOneAndUpdate({_id:id}, req.body, {
-        new: true,
-      })
+      let updateId = await this.collection.findOneAndUpdate(id, obj) 
       return updateId
-    } catch (error) {
-      console.log("Error:", error)
+    } catch (err) {
+      throw new Error(err);
     }
 
   }
 
   async deleteById(id) {
     try {
-      const deleteItem = await this.collection.deleteOne({_id:id})
+      const deleteItem = await this.collection.findByIdAndDelete(id)
       return deleteItem
       
-    } catch (error) {
-      console.log('error:', error)
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -66,13 +64,13 @@ class MongoClass {
       const deleteAll = await this.collection.deleteMany({})
       return deleteAll
       
-    } catch (error) {
-      console.log("Error:", error)
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
 }
 
 
-export default MongoClass
+export default MongoClass;
 
